@@ -14,6 +14,11 @@ showdown(playerChoice, computerChoice);
 //Get the player's choice
 function getPlayerChoice() {
     let playerChoice = prompt("Would you like to choose paper, rock or scissors?: ");
+    //make sure the player doesn't just hit cancel
+    if (playerChoice == null || playerChoice == undefined) {
+        console.log("Thanks for hitting cancel, dick! Pick a real answer, coward!"); 
+        gameFlow();
+    } 
     let playerChoiceLower = playerChoice.toLowerCase();
     console.log("You chose: " + playerChoiceLower);
 
@@ -58,13 +63,32 @@ function showdown(playerChoiceLower, computerChoice) {
         console.log("Computer chooses: Scissors! You tied!");
     }
 
+    endGame();
+
+}
+
+
+//The End-game function
+function endGame() {
     console.log("...........");
     let choice = prompt("Would you like to play again? (y/n) ");
-    let choiceLower = choice.toLowerCase();
 
-    if (choiceLower == "y") {
-        gameFlow();
+    //Make sure the person didn't just hit "cancel"
+    if (choice == null || choice == undefined) {
+        console.log("Thanks for hitting cancel, dick!");
     } else {
-        console.log("Later!");
+        let choiceLower = choice.toLowerCase();
+        
+        if (choiceLower == "y") {
+            //go back to the beginning of the game if they pick Y
+            gameFlow();
+        } else if (choiceLower == "n") {
+            //fake escape if they pick no
+            console.log("Later!");
+        } else {   
+            //go back to the top if they don't do Y or N
+            console.log("You have entered an inccorect choice.")
+            endGame();
+        }
     }
 }
