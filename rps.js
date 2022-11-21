@@ -2,7 +2,13 @@
 //and technically the first game I will have programmed (at least in Javascript) - Andy Gauger
 
 //BEGINNING OF GAME/MAIN GAMEFLOW
-gameFlow();
+//gameFlow();
+
+//getting the elements by id (from the buttons)
+const rockButton = document.querySelector("rockButton");
+
+//adding event listeners to them
+rockButton.addEventlistener("click", gameFlow);
 
 function gameFlow() {
 let computerChoice = getComputerChoice();
